@@ -1,6 +1,7 @@
 package Model;
 
 public class Queen {
+	
     private int row;
     private int column;
 

@@ -3,6 +3,7 @@ package Model;
 import java.util.Random;
 
 public class HillClimbing {
+	
     private static int n = 8;
     private static int stepsClimbedAfterLastRestart = 0;
     private static int steps =0;
