@@ -6,6 +6,12 @@ public class Queens {
 	public static void main(String[] args) {
 		ReadInput r = new ReadInput();
 		char[][] input = r.read();
+		for (int i = 0; i < input.length; i++) {
+			for (int j = 0; j < input[i].length; j++) {
+				System.out.print(input[i][j]);
+			}
+			System.out.println();
+		}
 		System.out.println("CSP:");
 		CSP csp = new CSP();
 		csp.solve(input);

@@ -15,9 +15,9 @@ public class ReadInput {
 			int j = 0;
 			while (line != null) {
 				System.out.println(line);
-		        char[] ch = new char[line.length()]; 
-		        for (int i = 0; i < line.length(); i++) { 
-		            ch[i] = line.charAt(i);
+		        char[] ch = new char[8];
+		        for (int i = 0; i < line.length(); i = i+2) {
+		        	ch[i/2] = line.charAt(i);
 		        }
 		        res[j++] = ch;
 				line = reader.readLine();
