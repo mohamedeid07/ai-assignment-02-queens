@@ -36,8 +36,9 @@ public class CSP {
 
 	
 	
+	
 	public char[][] solve(char[][] input) {
-		
+		input = utils.flatenInput(input);
 		int[] state = utils.inputToState(input);
 		int[] initState = state.clone();
 		long startTime = System.nanoTime();

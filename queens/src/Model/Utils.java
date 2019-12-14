@@ -59,4 +59,36 @@ public class Utils {
 		}
 		return res;
 	}
+	
+	public char[][] flatenInput(char[][] input){
+		int[] qincol = new int[8];
+		for (int i = 0; i < input.length; i++) {
+			for (int j = 0; j < input[i].length; j++) {
+				if(input[i][j] == 'Q') {
+					qincol[j]++;
+				}
+			}
+		}
+		for (int i = 0; i < input.length; i++) {
+			int no = 0;
+			for (int j = 0; j < input[i].length; j++) {
+				if(input[j][i] == 'Q') {
+					no++;
+					if(no == 2) {
+						input[j][i] = '#';
+						for (int k = 0; k < qincol.length; k++) {
+							if(qincol[k] == 0) {
+								input[j][k] = 'Q';
+								qincol[k]++;
+								qincol[i]--;
+								break;
+							}
+						}
+						no--;
+					}
+				}
+			}
+		}
+		return input;
+	}
 }
