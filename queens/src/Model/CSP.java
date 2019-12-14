@@ -3,9 +3,10 @@ package Model;
 public class CSP {
 	
 	Utils utils = new Utils();
+	private int nodes =0, steps=0;
 
 	private int[] step(int[] state, int index) {
-		int min = 64;
+		int min = Integer.MAX_VALUE;
 		int pos = 0;
 		for (int i = 0; i < 8; i++) {
 			state[index] = i;
@@ -20,18 +21,17 @@ public class CSP {
 	}
 
 	private int[] iterativeImprovement(int[] state, int[] initState) {
-		int totalno = 0, cycle = 0;
 		while (utils.attackingQueens(state) != 0) {
-			cycle++;
-			totalno++;
-			step(state, (int) (Math.random() * 8));
-			if (cycle >= 50) {
+			steps++;
+			nodes++;
+			state = step(state, (int) (Math.random() * 8));
+			if (steps >= 50) {
 				state = initState.clone();
-				cycle = 0;
+				steps = 0;
 			}
 		}
 
-		return new int[] {totalno, cycle};
+		return state;
 	}
 
 	
@@ -42,10 +42,10 @@ public class CSP {
 		int[] state = utils.inputToState(input);
 		int[] initState = state.clone();
 		long startTime = System.nanoTime();
-		int [] no = iterativeImprovement(state, initState);
+		state = iterativeImprovement(state, initState);
 		long endTime   = System.nanoTime();
         long totalTime = (endTime - startTime)/1000000;
-        utils.printResult(state, no[0], totalTime, no[1]);
+        utils.printResult(state, nodes, totalTime, steps);
 
 		return null;
 	}
