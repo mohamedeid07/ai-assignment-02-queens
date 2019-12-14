@@ -15,12 +15,11 @@ public class Queens {
 //		HillClimbing hc = new HillClimbing();
 //		hc.solve(input);
 		
-		KBeam kb = new KBeam();
-		System.out.println("K-Beam for k=1 :");
-		kb.solve(1);
-		
-		System.out.println("K-Beam for k=50 :");
-		kb.solve(50);
+		for (int i = 1; i < 100; i= i * 2) {
+			KBeam kb = new KBeam();
+			System.out.println("K-Beam for k= " + i +" :");
+			kb.solve(i);
+		}
 		
 //		System.out.println("Genetic:");
 //		Genetic genetic = new Genetic();

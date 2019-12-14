@@ -13,9 +13,15 @@ class Sortbyheuristic implements Comparator<int[]> {
 
 public class KBeam {
 
-	Utils utils = new Utils();
+	Utils utils;
 	private int maxIterations = 3000;
-	private int steps=0,nodes=0;
+	private int steps,nodes;
+	
+	public KBeam() {
+		utils = new Utils();
+		steps=0;
+		nodes=0;
+	}
 
 	private int[][] generateRandomStates(int k) {
 		int[][] states = new int[k][8];
